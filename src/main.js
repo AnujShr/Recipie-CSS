@@ -27,3 +27,4 @@ app.use(createPinia())
 app.use(router)
 
 app.component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+app.config.globalProperties.$log = console.log
