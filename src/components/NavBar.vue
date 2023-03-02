@@ -97,4 +97,44 @@ let showLink = ref(false)
   }
 }
 
+@media screen and (min-width: 962px) {
+  .nav-btn {
+    display: none;
+  }
+
+  .navbar {
+    height: 6rem;
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+
+      .nav-header {
+        height: auto;
+        margin-right: 2rem;
+      }
+
+      .nav-links {
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+
+        .nav-link {
+          padding: 0;
+          border-top: none;
+          margin-right: 1rem;
+          font-size: 1rem;
+        }
+
+        .contact-link {
+          margin-left: auto;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+}
+
 </style>
