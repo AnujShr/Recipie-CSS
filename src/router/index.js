@@ -11,7 +11,14 @@ const router = createRouter({
             component: MainLayout,
             children: webRoutes
         },
-        {path: '/:pathMatch(.*)*', name: 'not-found', component: NotFound},
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'not-found',
+            component: NotFound,
+            meta: {
+                title: '404 - Not Found'
+            }
+        },
 
     ],
     scrollBehavior(to, from, savedPosition) {
@@ -21,5 +28,10 @@ const router = createRouter({
             return {top: 0}
         }
     }
+})
+
+router.beforeEach((to, from, next) => {
+    document.title = `${to.meta.title} - SimplyRecipes`
+    next();
 })
 export default router
