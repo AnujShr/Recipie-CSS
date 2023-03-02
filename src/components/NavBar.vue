@@ -5,11 +5,11 @@
         <router-link to="/" class="nav-logo">
           <img src="@/assets/logo.svg" alt="Simply Recipes">
         </router-link>
-        <button class="btn nav-btn" type="button">
+        <button class="btn nav-btn" type="button" @click="showLink = !showLink">
           <font-awesome-icon icon="fa-solid fa-align-justify"></font-awesome-icon>
         </button>
       </div>
-      <div class="nav-links">
+      <div class="nav-links" :class="{'show-links': showLink}">
         <router-link to="/" class="nav-link">Home</router-link>
         <router-link to="/about" class="nav-link">About</router-link>
         <router-link to="/tags" class="nav-link">Tags</router-link>
@@ -22,10 +22,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "NavBar"
-}
+<script setup>
+import {ref} from "vue";
+
+let showLink = ref(false)
 </script>
 
 <style scoped lang="scss">
@@ -52,7 +52,6 @@ export default {
           width: 200px;
         }
       }
-
     }
   }
 
@@ -67,6 +66,9 @@ export default {
   .nav-links {
     display: flex;
     flex-direction: column;
+    height: 0;
+    overflow: hidden;
+    transition: var(--transition);
 
     .nav-link {
       display: block;
@@ -88,6 +90,10 @@ export default {
         padding: 0.15rem 1rem;
       }
     }
+  }
+
+  .show-links {
+    height: 310px;
   }
 }
 
