@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 import NotFound from '../views/404.vue'
 import HomeView from "../views/HomeView.vue";
 import Recipes from "../views/Recipes.vue";
+import Tags from "../views/Tags.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,14 @@ const router = createRouter({
             name: 'Recipes',
             meta: {
                 title: 'Recipes'
+            }
+        },
+        {
+            path: '/tags/:tag',
+            component: Tags,
+            name: 'Tags',
+            meta: {
+                title: 'Tags'
             }
         },
         {

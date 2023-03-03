@@ -78,13 +78,18 @@ const props = defineProps({
   .recipe-container {
     grid-template-columns: 200px 1fr;
 
-    .recipe {
-      .recipe-img {
-        height: 20rem;
-      }
+    &:has(.recipes-list:first-child) {
+      grid-template-columns: 1fr;
+    }
 
-      p {
-        font-size: 0.85rem;
+    .recipes-list {
+      .recipe {
+        .recipe-img {
+          height: 20rem;
+        }
+        p {
+          font-size: 0.85rem;
+        }
       }
     }
   }

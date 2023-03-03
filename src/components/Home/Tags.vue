@@ -2,11 +2,11 @@
   <div class="tags-container">
     <h4>Recipes</h4>
     <div class="tags-list">
-      <a v-for="recipe in props.tags"
-         :key="recipe.name"
-         href="#">
-        {{ recipe.name }} ({{ recipe.count }})
-      </a>
+      <router-link :to="{name:'Tags', params:{'tag' : tag.name}}" v-for="tag in props.tags"
+                   :key="tag.name"
+      >
+        {{ tag.name }} ({{ tag.count }})
+      </router-link>
     </div>
   </div>
 
