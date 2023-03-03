@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import NotFound from '../views/404.vue'
 import HomeView from "../views/HomeView.vue";
+import Recipes from "../views/Recipes.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,14 @@ const router = createRouter({
             }
         },
         {
+            path: '/recipes',
+            component: Recipes,
+            name: 'Recipes',
+            meta: {
+                title: 'Recipes'
+            }
+        },
+        {
             path: '/:pathMatch(.*)*',
             name: 'not-found',
             component: NotFound,
@@ -23,13 +32,6 @@ const router = createRouter({
         },
 
     ],
-    scrollBehavior(to, from, savedPosition) {
-        if (savedPosition) {
-            return savedPosition
-        } else {
-            return {top: 0}
-        }
-    }
 })
 
 router.beforeEach((to, from, next) => {
