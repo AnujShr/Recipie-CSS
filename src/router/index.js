@@ -1,15 +1,17 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import NotFound from '../views/404.vue'
-import webRoutes from './web';
-import MainLayout from "../layouts/MainLayout.vue";
+import HomeView from "../views/HomeView.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: '/',
-            component: MainLayout,
-            children: webRoutes
+            path: '',
+            component: HomeView,
+            name: 'Home',
+            meta: {
+                title: 'Home'
+            }
         },
         {
             path: '/:pathMatch(.*)*',

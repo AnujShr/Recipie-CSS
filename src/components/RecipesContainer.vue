@@ -1,11 +1,9 @@
 <template>
   <section class="recipe-container">
-
-    <Tags :tags="tags"/>
-
+    <slot></slot>
     <div class="recipes-list">
       <a href="#" class="recipe"
-         v-for="recipe in recipes">
+         v-for="recipe in props.recipes">
         <img :src="recipe.image" :alt="recipe.tag"
              class="img recipe-img">
         <h5>{{ recipe.title }}</h5>
@@ -17,74 +15,24 @@
 </template>
 
 <script setup>
-import Tags from "./Home/Tags.vue";
 
-const tags = [
-  {
-    name: 'Breakfasts',
-    count: 2,
-  },
-  {
-    name: 'Carrots',
-    count: 2,
-  },
-  {
-    name: 'Dinner',
-    count: 3,
-  },
-  {
-    name: 'Lunch',
-    count: 3,
-  },
-  {
-    name: 'Pancakes',
-    count: 3,
-  },
-
-]
-const recipes = [
-  {
-    image: '/assets/recipes/recipe-1.jpeg',
-    tag: 'Food',
-    title: 'Carne asada',
-    prep: '15 min',
-    cook: '5 min'
-  },
-  {
-    image: '/assets/recipes/recipe-2.jpeg',
-    tag: 'Food',
-    title: 'Greek Ribs',
-    prep: '15 min',
-    cook: '5 min'
-  },
-  {
-    image: '/assets/recipes/recipe-3.jpeg',
-    tag: 'Food',
-    title: 'Vegetable soups',
-    prep: '15 min',
-    cook: '5 min'
-  },
-  {
-    image: '/assets/recipes/recipe-4.jpeg',
-    tag: 'Food',
-    title: 'Banana Pancake',
-    prep: '15 min',
-    cook: '5 min'
-  },
-]
+const props = defineProps({
+  recipes: {
+    type: Array,
+    required: true
+  }
+})
 
 </script>
 <style scoped lang="scss">
 .recipe-container {
   display: grid;
   gap: 2rem 1rem;
-  border: 2px solid red;
 
   .recipes-list {
     display: grid;
     gap: 2rem 1rem;
     padding-bottom: 3rem;
-    border: 2px solid green;
 
     .recipe {
       display: block;
@@ -111,4 +59,53 @@ const recipes = [
     }
   }
 }
+
+@media screen and (min-width: 576px) {
+  .recipe-container {
+    .recipes-list {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .recipe {
+      .recipe-img {
+        height: 10rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .recipe-container {
+    grid-template-columns: 200px 1fr;
+
+    .recipe {
+      .recipe-img {
+        height: 20rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .recipe-container {
+    &:has(.recipes-list:first-child) {
+      grid-template-columns: 1fr;
+    }
+
+    .recipes-list {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .recipe {
+      h5 {
+        font-size: 1.15rem;
+      }
+    }
+  }
+}
+
 </style>
