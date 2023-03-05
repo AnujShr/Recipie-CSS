@@ -1,8 +1,10 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import NotFound from '../views/404.vue'
-import HomeView from "../views/HomeView.vue";
-import Recipes from "../views/Recipes.vue";
-import Tags from "../views/Tags.vue";
+
+const HomeView = () => import('../views/HomeView.vue')
+const About = () => import('../views/About.vue')
+const Tags = () => import('../views/Tags.vue')
+const Recipes = () => import('../views/Recipes.vue')
+const NotFound = () => import('../views/404.vue')
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,8 +29,13 @@ const router = createRouter({
             path: '/tags/:tag',
             component: Tags,
             name: 'Tags',
+        },
+        {
+            path: '/about',
+            component: About,
+            name: 'About',
             meta: {
-                title: 'Tags'
+                title: 'About'
             }
         },
         {
@@ -39,12 +46,12 @@ const router = createRouter({
                 title: '404 - Not Found'
             }
         },
-
     ],
 })
 
 router.beforeEach((to, from, next) => {
-    document.title = `${to.meta.title} - SimplyRecipes`
+    if (to.meta.title)
+        document.title = `${to.meta.title} - SimplyRecipes`
     next();
 })
 export default router
