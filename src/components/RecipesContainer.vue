@@ -25,6 +25,8 @@ const props = defineProps({
 
 </script>
 <style scoped lang="scss">
+@import "../css/mixin.scss";
+
 .recipe-container {
   display: grid;
   gap: 2rem 1rem;
@@ -85,8 +87,9 @@ const props = defineProps({
     .recipes-list {
       .recipe {
         .recipe-img {
-          height: 20rem;
+          height: 15rem;
         }
+
         p {
           font-size: 0.85rem;
         }
