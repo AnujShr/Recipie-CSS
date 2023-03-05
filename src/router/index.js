@@ -3,6 +3,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 const HomeView = () => import('../views/HomeView.vue')
 const About = () => import('../views/About.vue')
 const Tags = () => import('../views/Tags.vue')
+const TagDetails = () => import('../views/TagDetails.vue')
 const Recipes = () => import('../views/Recipes.vue')
 const Contact = () => import('../views/Contact.vue')
 const NotFound = () => import('../views/404.vue')
@@ -27,9 +28,13 @@ const router = createRouter({
             }
         },
         {
-            path: '/tags/:tag',
+            path: '/tags',
             component: Tags,
             name: 'Tags',
+        }, {
+            path: '/tags/:tag',
+            component: TagDetails,
+            name: 'TagDetails',
         },
         {
             path: '/about',

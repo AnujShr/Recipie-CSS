@@ -12,6 +12,7 @@
       <div class="nav-links" :class="{'show-links': showLink}">
         <router-link to="/" class="nav-link">Home</router-link>
         <router-link to="/about" class="nav-link">About</router-link>
+        <router-link to="/tags" class="nav-link">Tags</router-link>
         <router-link to="/recipes" class="nav-link">Recipe</router-link>
         <div class="nav-link contact-link">
           <router-link to="/contact" class="btn">Contact</router-link>

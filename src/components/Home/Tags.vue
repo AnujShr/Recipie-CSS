@@ -2,7 +2,7 @@
   <div class="tags-container">
     <h4>Recipes</h4>
     <div class="tags-list">
-      <router-link :to="{name:'Tags', params:{'tag' : tag.name}}" v-for="tag in props.tags"
+      <router-link :to="{name:'TagDetails', params:{'tag' : tag.name}}" v-for="tag in props.tags"
                    :key="tag.name"
       >
         {{ tag.name }} ({{ tag.count }})
